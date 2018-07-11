@@ -2,13 +2,13 @@
 #define _DAO_MANAGER_HH_
 
 #include "UsuarioDAO.hh"
-// #include "CredencialDAO.hh"
+#include "CredencialDAO.hh"
 
 class DaoManager {
 private:
   std::string _db;
   UsuarioDAO *_uDAO;
-  // CredencialDAO _cDAO;
+  CredencialDAO *_cDAO;
 
 public:
   DaoManager(std::string db);
@@ -16,6 +16,7 @@ public:
 
   std::string caminho() const;
   UsuarioDAO getUsuarioDAO();
+  CredencialDAO getCredencialDAO();
 };
 
 #endif
