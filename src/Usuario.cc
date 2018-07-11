@@ -12,9 +12,9 @@ Usuario::Usuario(string id, string nome, string sobrenome) {
   _id = id; _nome = nome; _sobrenome = sobrenome;
 }
 
-void Usuario::setID(string id) {
-  _id = id;
-}
+// void Usuario::setID(string id) {
+//   _id = id;
+// }
 
 void Usuario::setNome(string nome) {
   _nome = nome;
