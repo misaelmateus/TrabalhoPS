@@ -41,3 +41,7 @@ vector<string> get_dir(const string dir) {
   closedir(d);
   return files;
 }
+
+void create_dir(const string path) {
+  mkdir(path.c_str(), S_IFDIR | S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
+}
