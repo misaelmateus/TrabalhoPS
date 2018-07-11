@@ -9,12 +9,6 @@ private:
   std::string _nome;
   std::string _sobrenome;
 
-  friend class UsuarioDAO;
-
-  void setID(std::string id);
-  void setNome(std::string nome);
-  void setSobrenome(std::string sobrenome);
-
 public:
   Usuario() = default;
   Usuario(std::string id);
@@ -23,6 +17,9 @@ public:
   std::string id() const;
   std::string nome() const;
   std::string sobrenome() const;
+
+  void setNome(std::string nome);
+  void setSobrenome(std::string sobrenome);
 };
 
 #endif
