@@ -4,6 +4,10 @@
 
 using std::string;
 
+Usuario::Usuario(string id) {
+  _id = id;
+}
+
 void Usuario::setID(string id) {
   _id = id;
 }
@@ -14,6 +18,10 @@ void Usuario::setNome(string nome) {
 
 void Usuario::setSobrenome(string sobrenome) {
   _sobrenome = sobrenome;
+}
+
+string Usuario::id() const {
+  return _id;
 }
 
 string Usuario::nomeCompleto() const {

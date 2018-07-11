@@ -19,10 +19,10 @@ UsuarioDAO::UsuarioDAO(string pasta) {
 
 string UsuarioDAO::caminho() const { return _pasta_raiz; }
 
-UsuarioDAO::STATUS UsuarioDAO::lerUsuario(string username, Usuario *u) {
+UsuarioDAO::STATUS UsuarioDAO::lerUsuario(Usuario *u) {
 
   // Verifica se usuario existe no sistema
-  string pasta_usuario = _pasta_raiz + username + "/";
+  string pasta_usuario = _pasta_raiz + u->id() + "/";
   if(!file_exist(pasta_usuario))
     return UsuarioDAO::U_NAO_EXISTE;
 
@@ -35,7 +35,6 @@ UsuarioDAO::STATUS UsuarioDAO::lerUsuario(string username, Usuario *u) {
   getline(fnome, nome);
   getline(fsobrenome, sobrenome);
 
-  u->setID(username);
   u->setNome(nome);
   u->setSobrenome(sobrenome);
 
@@ -53,11 +52,10 @@ vector<Usuario> UsuarioDAO::lerTodosUsuarios() {
   // Obter usuarios
   vector<Usuario> us;
   for(auto const f : files) {
-    Usuario u;
+    Usuario u(f);
     // Não é necessário verificar se usuario existe, a lista acima
     // retorna apenas usuarios existentes.
-    lerUsuario(f, &u);
-    us.push_back(u);
+    lerUsuario(&u); us.push_back(u);
   }
 
   return us;

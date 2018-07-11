@@ -17,6 +17,9 @@ private:
 
 public:
   Usuario() = default;
+  Usuario(std::string id);
+
+  std::string id() const;
   std::string nomeCompleto() const;
 };
 

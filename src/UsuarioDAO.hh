@@ -15,7 +15,8 @@ public:
 
   UsuarioDAO(std::string pasta);
   std::string caminho() const;
-  STATUS lerUsuario(std::string username, Usuario *u);
+  STATUS lerUsuario(Usuario *u);
+  void escreverUsuario(Usuario u);
   std::vector<Usuario> lerTodosUsuarios();
 };
 
