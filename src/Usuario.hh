@@ -18,9 +18,11 @@ private:
 public:
   Usuario() = default;
   Usuario(std::string id);
+  Usuario(std::string id, std::string nome, std::string sobrenome);
 
   std::string id() const;
-  std::string nomeCompleto() const;
+  std::string nome() const;
+  std::string sobrenome() const;
 };
 
 #endif

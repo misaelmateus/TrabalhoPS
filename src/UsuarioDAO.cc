@@ -7,8 +7,7 @@
 #include "Usuario.hh"
 #include "UsuarioDAO.hh"
 
-using std::getline; using std::vector;
-using std::string; using std::ifstream;
+using namespace std;
 
 // ESTRUTURA DO DADO USUARIO
 static string NOME = "nome", SOBRENOME = "sobrenome";
@@ -59,4 +58,16 @@ vector<Usuario> UsuarioDAO::lerTodosUsuarios() {
   }
 
   return us;
+}
+
+void UsuarioDAO::escreverUsuario(Usuario u) {
+  string pasta_usuario = _pasta_raiz + u.id() + "/";
+
+  // Se usuario não existir crie novo, senão sobreescreve.
+  if(!file_exist(pasta_usuario)) { create_dir(pasta_usuario); }
+
+  ofstream fnome(pasta_usuario + NOME), fsobrenome(pasta_usuario + SOBRENOME);
+
+  fnome << u.nome(); fsobrenome << u.sobrenome();
+  fnome.close(); fsobrenome.close();
 }
