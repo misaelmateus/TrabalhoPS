@@ -5,8 +5,7 @@
 #include "Credencial.hh"
 #include "CredencialDAO.hh"
 
-using std::getline;
-using std::string; using std::ifstream;
+using namespace std;
 
 // Estrutura do arquivo de credenciais
 // Nome do arquivo: username do usuario
@@ -33,4 +32,13 @@ void CredencialDAO::lerCredencial(Credencial *c) {
   ifstream fcredencial(arquivo_credencial);
   string senha; getline(fcredencial, senha);
   c->setSenha(senha);
+}
+
+void CredencialDAO::escreverCredencial(string usuario, string senha) {
+  string arquivo_credencial = _pasta_raiz + usuario;
+
+  ofstream fcredencial(arquivo_credencial);
+  fcredencial << senha;
+
+  fcredencial.close();
 }

@@ -13,6 +13,7 @@ public:
   CredencialDAO(std::string pasta);
   std::string caminho() const;
   void lerCredencial(Credencial *c);
+  void escreverCredencial(std::string usuario, std::string senha);
 };
 
 #endif
