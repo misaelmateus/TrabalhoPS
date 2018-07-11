@@ -66,8 +66,8 @@ void UsuarioDAO::escreverUsuario(Usuario u) {
   // Se usuario não existir crie novo, senão sobreescreve.
   if(!file_exist(pasta_usuario)) { create_dir(pasta_usuario); }
 
+  // Escreve em disco
   ofstream fnome(pasta_usuario + NOME), fsobrenome(pasta_usuario + SOBRENOME);
-
   fnome << u.nome(); fsobrenome << u.sobrenome();
   fnome.close(); fsobrenome.close();
 }
