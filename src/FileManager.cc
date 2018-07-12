@@ -4,6 +4,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <dirent.h>
+#include <ftw.h>
 
 #include <string>
 using std::string;
@@ -44,4 +45,14 @@ vector<string> get_dir(const string dir) {
 
 void create_dir(const string path) {
   mkdir(path.c_str(), S_IFDIR | S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
+}
+
+int unlink_cb(const char *fpath, const struct stat *sb, int typeflag, struct FTW *ftwbuf) {
+  (void)sb; (void)typeflag; (void)ftwbuf;
+  return remove(fpath);
+}
+
+
+void remove_dir(const string path) {
+  nftw(path.c_str(), unlink_cb, 64, FTW_DEPTH);
 }

@@ -67,3 +67,5 @@ void NoticiaDAO::escreverNoticia(Noticia n) {
 
   fresumo.close(); ftitulo.close(); ftexto.close(); fautor.close();
 }
+
+void NoticiaDAO::apagarNoticia(Noticia n) { remove_dir(_pasta_raiz + n.id() + "/"); }

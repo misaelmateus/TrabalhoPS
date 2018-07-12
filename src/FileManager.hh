@@ -13,6 +13,10 @@ bool file_is_dir(const std::string file);
 // Obtem diretórios dentro de outro diretório.
 std::vector<std::string> get_dir(const std::string dir);
 
+// Criar um novo diretório
 void create_dir(const std::string path);
+
+// Remover diretório (vazio e não vazio)
+void remove_dir(const std::string path);
 
 #endif  // _FILE_MANAGER_HH_

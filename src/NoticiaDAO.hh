@@ -41,6 +41,9 @@ public:
   // Escreve notícia em disco.
   void escreverNoticia(Noticia n);
 
+  // Apagar notícia de disco;
+  void apagarNoticia(Noticia n);
+
   // Retorna todas as notícias em disco.
   std::vector<Noticia> lerTodasNoticias();
 };
