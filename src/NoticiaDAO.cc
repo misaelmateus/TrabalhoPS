@@ -1,6 +1,5 @@
 #include <string>
 #include <vector>
-#include <iostream>
 #include <fstream>
 
 #include "FileManager.hh"
@@ -12,7 +11,9 @@ using namespace std;
 static string RESUMO = "resumo",
   TITULO = "titulo",
   TEXTO = "texto",
-  AUTOR = "autor";
+  AUTOR = "autor",
+  DATA = "data",
+  ULTIMA = "ultima";
 
 NoticiaDAO::NoticiaDAO(string pasta) {
   _pasta_raiz = pasta;
@@ -27,16 +28,20 @@ NoticiaDAO::STATUS NoticiaDAO::lerNoticia(Noticia *n) {
     return NoticiaDAO::N_NAO_EXISTE;
 
   ifstream fresumo(pasta_noticia + RESUMO), ftitulo(pasta_noticia + TITULO),
-    fautor(pasta_noticia + AUTOR), ftexto(pasta_noticia + TEXTO);
+    fautor(pasta_noticia + AUTOR), ftexto(pasta_noticia + TEXTO),
+    fdata(pasta_noticia + DATA);
 
-  string resumo, titulo, texto, autor;
+  string resumo, titulo, texto, autor, dataStr;
   getline(fresumo, resumo); getline(ftitulo, titulo);
   getline(ftexto, texto); getline(fautor, autor);
+  getline(fdata, dataStr);
 
   n->setResumo(resumo); n->setTitulo(titulo);
   n->setAutor(autor); n->setTexto(texto);
+  n->setData(stol(dataStr));
 
-  fresumo.close(); ftitulo.close(); fautor.close(); ftexto.close();
+  fresumo.close(); ftitulo.close(); fautor.close();
+  ftexto.close(); fdata.close();
 
   return NoticiaDAO::OK;
 }
@@ -61,11 +66,34 @@ void NoticiaDAO::escreverNoticia(Noticia n) {
 
   // Escrever notícia.
   ofstream fresumo(pasta_noticia + RESUMO), ftitulo(pasta_noticia + TITULO),
-    ftexto(pasta_noticia + TEXTO), fautor(pasta_noticia + AUTOR);
+    ftexto(pasta_noticia + TEXTO), fautor(pasta_noticia + AUTOR),
+    fdata(pasta_noticia + DATA);
+
   fresumo << n.resumo(); ftitulo << n.titulo();
   ftexto << n.texto(); fautor << n.autor();
+  fdata << n.data();
 
-  fresumo.close(); ftitulo.close(); ftexto.close(); fautor.close();
+  fresumo.close(); ftitulo.close(); ftexto.close();
+  fautor.close(); fdata.close();
+
 }
 
 void NoticiaDAO::apagarNoticia(Noticia n) { remove_dir(_pasta_raiz + n.id() + "/"); }
+
+unsigned int NoticiaDAO::dataUltimaNoticia() const {
+  string arquivo_ultima = _pasta_raiz + ULTIMA;
+  ifstream fultima(arquivo_ultima);
+
+  string dataStr; unsigned int data = 0;
+  getline(fultima, dataStr);
+  data = stol(dataStr);
+
+  return data;
+}
+
+void NoticiaDAO::atualizarUltimaData(unsigned int data) {
+  string pasta_ultima = _pasta_raiz + ULTIMA;
+  ofstream fultima(pasta_ultima);
+  fultima << data;
+  fultima.close();
+}
