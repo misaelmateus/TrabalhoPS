@@ -16,7 +16,7 @@ std::string ListarNoticiasView::ShowView(std::vector<Noticia> noticias, int ini,
 	std::cout << "Mostrando de noticia " << ini << " à " << fim << "\n\n";
 	
 	for(int i = 0; i < noticias.size(); i++){
-		std::cout << "----- Noticia (" << i+1 << ")-----" << "\n";
+		std::cout << "----- Noticia (" << i+ini << ")-----" << "\n";
 		std::cout << noticias[i].titulo() << "\n";
 		std::cout << noticias[i].dataConvertida() << "\n";
 

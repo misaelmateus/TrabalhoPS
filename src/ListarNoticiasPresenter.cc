@@ -10,7 +10,7 @@ ListarNoticiasPresenter::ListarNoticiasPresenter(std::vector<Noticia> &_noticias
 }
 
 int ListarNoticiasPresenter::run(){
-	int ini = 1, fim = 10;
+	int ini = 1, fim = 3;
 	while(true){
 		std::vector<Noticia> noticias = model->getNoticias(ini, fim);
 		std::string opcao = listarNoticiasView.ShowView(noticias, ini, fim);
@@ -20,7 +20,7 @@ int ListarNoticiasPresenter::run(){
 			return 1;
 		else if(opcao[0] == '+'){
 			if(fim < model->noticiasSize())
-				ini += 10, fim += 10;
+				ini += 3, fim += 3;
 			continue;
 		}
 		else if(opcao[0] == '-'){
