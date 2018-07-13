@@ -8,7 +8,7 @@
 
 class Noticia {
 private:
-  unsigned int _data;
+  std::string _data;
   std::string _resumo;
   std::string _titulo;
   std::string _texto;
@@ -22,14 +22,14 @@ public:
   void setTitulo(std::string titulo);
   void setTexto(std::string texto);
   void setAutor(std::string autor);
-  void setData(unsigned int data);
+  void setData(std::string data);
 
   std::string resumo() const;
   std::string titulo() const;
   std::string texto() const;
   std::string id() const;
   std::string autor() const;
-  unsigned int data() const;
+  std::string data() const;
 };
 
 #endif

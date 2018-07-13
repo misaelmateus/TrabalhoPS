@@ -31,14 +31,14 @@ NoticiaDAO::STATUS NoticiaDAO::lerNoticia(Noticia *n) {
     fautor(pasta_noticia + AUTOR), ftexto(pasta_noticia + TEXTO),
     fdata(pasta_noticia + DATA);
 
-  string resumo, titulo, texto, autor, dataStr;
+  string resumo, titulo, texto, autor, data;
   getline(fresumo, resumo); getline(ftitulo, titulo);
   getline(ftexto, texto); getline(fautor, autor);
-  getline(fdata, dataStr);
+  getline(fdata, data);
 
   n->setResumo(resumo); n->setTitulo(titulo);
   n->setAutor(autor); n->setTexto(texto);
-  n->setData(stol(dataStr));
+  n->setData(data);
 
   fresumo.close(); ftitulo.close(); fautor.close();
   ftexto.close(); fdata.close();
@@ -80,20 +80,20 @@ void NoticiaDAO::escreverNoticia(Noticia n) {
 
 void NoticiaDAO::apagarNoticia(Noticia n) { remove_dir(_pasta_raiz + n.id() + "/"); }
 
-unsigned int NoticiaDAO::dataUltimaNoticia() const {
-  string arquivo_ultima = _pasta_raiz + ULTIMA;
-  ifstream fultima(arquivo_ultima);
+// unsigned int NoticiaDAO::dataUltimaNoticia() const {
+//   string arquivo_ultima = _pasta_raiz + ULTIMA;
+//   ifstream fultima(arquivo_ultima);
 
-  string dataStr; unsigned int data = 0;
-  getline(fultima, dataStr);
-  data = stol(dataStr);
+//   string dataStr; unsigned int data = 0;
+//   getline(fultima, dataStr);
+//   data = stol(dataStr);
 
-  return data;
-}
+//   return data;
+// }
 
-void NoticiaDAO::atualizarUltimaData(unsigned int data) {
-  string pasta_ultima = _pasta_raiz + ULTIMA;
-  ofstream fultima(pasta_ultima);
-  fultima << data;
-  fultima.close();
-}
+// void NoticiaDAO::atualizarUltimaData(unsigned int data) {
+//   string pasta_ultima = _pasta_raiz + ULTIMA;
+//   ofstream fultima(pasta_ultima);
+//   fultima << data;
+//   fultima.close();
+// }

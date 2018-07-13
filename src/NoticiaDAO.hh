@@ -12,7 +12,6 @@
 
 // O DAO espera uma organização lógica dos subdiretórios. Da seguinte forma:
 // noticia/ -- pasta raiz
-//  L ultima -- arquivo com a data da ultima noticia
 //  L n1/ -- noticia1 (n1 id da noticia)
 //  |  L autor
 //  |  L resumo
@@ -49,11 +48,11 @@ public:
   // Retorna todas as notícias em disco.
   std::vector<Noticia> lerTodasNoticias();
 
-  // Obtem data da ultima noticia em disco.
-  unsigned int dataUltimaNoticia() const;
+  // // Obtem data da ultima noticia em disco.
+  // unsigned int dataUltimaNoticia() const;
 
-  // Atualiza data da ultima noticia em disco.
-  void atualizarUltimaData(unsigned int data);
+  // // Atualiza data da ultima noticia em disco.
+  // void atualizarUltimaData(unsigned int data);
 };
 
 #endif
