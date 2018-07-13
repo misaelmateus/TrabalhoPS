@@ -26,7 +26,7 @@ std::string ListarNoticiasView::ShowView(std::vector<Noticia> noticias, int ini,
 
 	std::string opcao;
 
-	std::cout << "Digite + para ver noticias mais antigas, - para ver noticias mais recentes, f para fechar programa, v para voltar ou o id da noticia para entrar nela\n";
+	std::cout << "Digite:\n + para ver noticias mais antigas\n- para ver noticias mais recentes\n f para fechar programa\n v para voltar\n id da noticia para entrar nela\n";
 
 	 std::cin >> opcao;
 	 return opcao;
