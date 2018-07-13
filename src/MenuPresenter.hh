@@ -8,7 +8,7 @@ class MenuPresenter {
 		MenuView *menuView;
 	public:
 		MenuPresenter();
-		void run();
+		int run();
 };
 
 #endif 
