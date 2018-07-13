@@ -1,9 +1,10 @@
+#include "DaoManager.hh"
 #include<stdlib.h>
 #include<vector>
 #include "MenuPresenter.hh"
 #include "PesquisaPresenter.hh"
 #include "ListarNoticiasPresenter.hh"
-#include "DaoManager.hh"
+
 MenuPresenter::MenuPresenter(){
 	menuView = new MenuView();
 
@@ -12,6 +13,7 @@ MenuPresenter::MenuPresenter(){
 int MenuPresenter::run(){
 	std::vector<Noticia> noticias;
 	DaoManager daoManager("database");
+	noticias = daoManager.getNoticiaDAO().lerTodasNoticiasOrdenado();
 		
 	while(true){
 		int opcao = menuView->ShowView();

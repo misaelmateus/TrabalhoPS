@@ -3,7 +3,7 @@
 #include<string>
 #include<algorithm>
 #include "ListarNoticiasPresenter.hh"
-
+#include "NoticiaView.hh"
 ListarNoticiasPresenter::ListarNoticiasPresenter(std::vector<Noticia> &_noticias){
 	model = new ListarNoticiasModel(_noticias);
 	listarNoticiasView = ListarNoticiasView();
@@ -12,7 +12,8 @@ ListarNoticiasPresenter::ListarNoticiasPresenter(std::vector<Noticia> &_noticias
 int ListarNoticiasPresenter::run(){
 	int ini = 1, fim = 10;
 	while(true){
-		std::string opcao = listarNoticiasView.ShowView(model->getNoticias(ini, fim), ini, fim);
+		std::vector<Noticia> noticias = model->getNoticias(ini, fim);
+		std::string opcao = listarNoticiasView.ShowView(noticias, ini, fim);
 		if(opcao[0] == 'f') // fechar programa
 			return 0;
 		else if(opcao[0] == 'v') // voltar
@@ -31,7 +32,8 @@ int ListarNoticiasPresenter::run(){
 			for(auto &u : opcao) if(!isdigit(u)) continue;
 			int num = std::stoi(opcao);
 			if(num > 0 && num <= model->noticiasSize()){
-				// abrir noticia noticias[(num-1)]
+				NoticiaView noticiaView(noticias[num-1]);
+				noticiaView.ShowView();
 			}
 		}
 	}

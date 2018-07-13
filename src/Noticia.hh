@@ -30,6 +30,7 @@ public:
   std::string id() const;
   std::string autor() const;
   std::string data() const;
+  std::string dataConvertida();
 };
 
 #endif

@@ -32,9 +32,14 @@ NoticiaDAO::STATUS NoticiaDAO::lerNoticia(Noticia *n) {
     fautor(pasta_noticia + AUTOR), ftexto(pasta_noticia + TEXTO),
     fdata(pasta_noticia + DATA);
 
-  string resumo, titulo, texto, autor, data;
-  getline(fresumo, resumo); getline(ftitulo, titulo);
-  getline(ftexto, texto); getline(fautor, autor);
+  string resumo = "", titulo, texto = "", autor, data;
+  string _resumo, _texto;
+  while( getline(fresumo, _resumo)) resumo += _resumo, resumo += "\n";
+
+  getline(ftitulo, titulo);
+  while( getline(ftexto, _texto)) texto += _texto;
+
+  getline(fautor, autor);
   getline(fdata, data);
 
   n->setResumo(resumo); n->setTitulo(titulo);
