@@ -48,7 +48,7 @@ public:
   // Retorna todas as notícias em disco.
   std::vector<Noticia> lerTodasNoticias();
 
-  std::vector<Noticia> letTodasNoticiasOrdenado();
+  std::vector<Noticia> lerTodasNoticiasOrdenado();
   
   // // Obtem data da ultima noticia em disco.
   // unsigned int dataUltimaNoticia() const;

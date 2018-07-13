@@ -1,12 +1,14 @@
 #ifndef _LISTARNOTICIASVIEW_HH_
 #define _LISTARNOTICIASVIEW_HH_
+#include "Noticia.hh"
+#include "ListarNoticiasView.hh"
+#include <vector>
 
-
-class PesquisaView {
+class ListarNoticiasView {
 
 	public:
 		ListarNoticiasView();
-		string ShowView(vector<Noticias> &, int , int );
+		std::string ShowView(std::vector<Noticia> , int ini, int fim);
 
 };
 

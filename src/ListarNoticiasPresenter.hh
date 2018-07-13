@@ -1,14 +1,14 @@
 #ifndef _LISTARNOTICIASPRESENTER_HH_
 #define _LISTARNOTICIASPRESENTER_HH_
+#include "Noticia.hh"
 #include "ListarNoticiasView.hh"
-
-
-class PesquisaView {
+#include "ListarNoticiasModel.hh"
+class ListarNoticiasPresenter {
 	private:
-		ListarNoticiasView* listarNoticiasView;
-		vector<Noticias> &noticias;
+		ListarNoticiasView listarNoticiasView;
+		ListarNoticiasModel *model;
 	public:
-		ListarNoticiasPresenter();
+		ListarNoticiasPresenter(std::vector<Noticia> &);
 		int run();
 
 };

@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <algorithm>
 
 #include "FileManager.hh"
 #include "NoticiaDAO.hh"
@@ -78,14 +79,15 @@ void NoticiaDAO::escreverNoticia(Noticia n) {
 
 }
 
-bool comp(Noticia &a, Noticias &b){
-  return a._data < b._data;
+bool compNoticia(Noticia &a, Noticia &b){
+  return a.data() < b.data();
 }
 
 void NoticiaDAO::apagarNoticia(Noticia n) { remove_dir(_pasta_raiz + n.id() + "/"); }
+
 std::vector<Noticia> NoticiaDAO::lerTodasNoticiasOrdenado(){
   vector<Noticia> noticias = lerTodasNoticias();
-  sort(noticias.begin(), noticias.end(), comp);
+  std::sort(noticias.begin(), noticias.end(), compNoticia);
   return noticias;
 }
 // unsigned int NoticiaDAO::dataUltimaNoticia() const {
