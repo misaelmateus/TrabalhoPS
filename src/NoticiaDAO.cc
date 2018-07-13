@@ -78,8 +78,16 @@ void NoticiaDAO::escreverNoticia(Noticia n) {
 
 }
 
-void NoticiaDAO::apagarNoticia(Noticia n) { remove_dir(_pasta_raiz + n.id() + "/"); }
+bool comp(Noticia &a, Noticias &b){
+  return a._data < b._data;
+}
 
+void NoticiaDAO::apagarNoticia(Noticia n) { remove_dir(_pasta_raiz + n.id() + "/"); }
+std::vector<Noticia> NoticiaDAO::lerTodasNoticiasOrdenado(){
+  vector<Noticia> noticias = lerTodasNoticias();
+  sort(noticias.begin(), noticias.end(), comp);
+  return noticias;
+}
 // unsigned int NoticiaDAO::dataUltimaNoticia() const {
 //   string arquivo_ultima = _pasta_raiz + ULTIMA;
 //   ifstream fultima(arquivo_ultima);
